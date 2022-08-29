@@ -1,7 +1,7 @@
 name: spotify_player_widgets
-description: A new Flutter project.
+description: A package that provides multiple Spotify player widgets that let you connect with your Spotify app.
 version: 0.0.1
-homepage:
+homepage: https://github.com/ixdlabs/spotify-player-widgets.git
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
