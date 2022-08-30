@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:spotify_player_widgets/spotify_player_widgets.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: '.env');
   runApp(const MyApp());
 }
 
@@ -12,10 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Spotify  Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: 'Spotify Players Demo',
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: const SpotifyWidgetDemo(),
     );
   }
@@ -23,11 +23,13 @@ class MyApp extends StatelessWidget {
 
 class SpotifyWidgetDemo extends StatelessWidget {
   const SpotifyWidgetDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final ClientCredentials clientCredentials = ClientCredentials(
-        clientId: "c7fa04889aa64a7ab5b62703c5307d46",
-        redirectUrl: "http://localhost:8889/callback");
+        clientId: dotenv.env['CLIENT_ID'].toString(),
+        redirectUrl: dotenv.env['REDIRECT_URL'].toString());
+
     // final List<PlaylistDetails> playlists = [
     //   PlaylistDetails(
     //       url: "https://open.spotify.com/playlist/6TK6jJIzcjyErNGex4xqYE",
@@ -43,7 +45,7 @@ class SpotifyWidgetDemo extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Spotify Widget Demo"),
+          title: const Center(child: Text("Example App")),
         ),
         body: Center(
           child: SpotifyPlayer(clientCredentials: clientCredentials),
