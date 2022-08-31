@@ -6,7 +6,7 @@ import 'package:spotify_player_widgets/src/constants/colors.dart';
 import 'package:spotify_player_widgets/src/services/song_progress_indicator_handler.dart';
 import 'package:spotify_player_widgets/src/services/spotify_service.dart';
 import 'package:spotify_player_widgets/src/user_classes/playlist_details.dart';
-import 'package:spotify_player_widgets/src/utils/create_playlist_spotify_uri.dart';
+import 'package:spotify_player_widgets/src/utils/launch_spotify_url.dart';
 
 class Recommendation extends StatelessWidget {
   final List<PlaylistDetails> playlists;
@@ -69,10 +69,7 @@ class PlaylistCover extends StatelessWidget {
     final coverImage = playlist.coverImageUrl;
     return GestureDetector(
       onTap: () async {
-        final playlistUri = createPlaylistSpotifyUri(playlist.url);
-        await spotifyService.play(playlistUri);
-        spHandler.start();
-        spHandler.resume();
+        await launchSpotifyUrl(playlist.url);
       },
       child: Padding(
         padding: const EdgeInsets.only(right: 15.0),
