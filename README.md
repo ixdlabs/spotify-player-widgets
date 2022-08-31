@@ -1,4 +1,4 @@
-A Fluitter package that provides Spotify player widgets, which can be used to seemlessly connect with the Spotify app.
+A Fluitter package that provides Spotify player widgets, which can be used to seemlessly connect with your Spotify app.
 
 <p>
   <img src="https://github.com/ixdlabs/spotify-player-widgets/blob/master/previews/spotify_player.gif?raw=true"
