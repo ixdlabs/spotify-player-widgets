@@ -30,17 +30,17 @@ class SpotifyWidgetDemo extends StatelessWidget {
         clientId: dotenv.env['CLIENT_ID'].toString(),
         redirectUrl: dotenv.env['REDIRECT_URL'].toString());
 
-    // final List<PlaylistDetails> playlists = [
-    //   PlaylistDetails(
-    //       url: "https://open.spotify.com/playlist/6TK6jJIzcjyErNGex4xqYE",
-    //       name: "Opi Stephen curry",
-    //       coverImageUrl:
-    //           "https://st3.depositphotos.com/29618360/31748/i/1600/depositphotos_317483090-free-stock-photo-sunset-danube-delta-flying-birds.jpg"),
-    //   PlaylistDetails(
-    //       url:
-    //           "https://open.spotify.com/playlist/1oljSfrrMYqCyiWu1vtsAu?si=6f09797b27cd4a55",
-    //       name: "Bubbles"),
-    // ];
+    final List<PlaylistDetails> playlists = [
+      PlaylistDetails(
+          url: "https://open.spotify.com/playlist/6TK6jJIzcjyErNGex4xqYE",
+          name: "Opi Stephen curry",
+          coverImageUrl:
+              "https://st3.depositphotos.com/29618360/31748/i/1600/depositphotos_317483090-free-stock-photo-sunset-danube-delta-flying-birds.jpg"),
+      PlaylistDetails(
+          url:
+              "https://open.spotify.com/playlist/1oljSfrrMYqCyiWu1vtsAu?si=6f09797b27cd4a55",
+          name: "Bubbles"),
+    ];
 
     return SafeArea(
       child: Scaffold(
@@ -48,7 +48,8 @@ class SpotifyWidgetDemo extends StatelessWidget {
           title: const Center(child: Text("Example App")),
         ),
         body: Center(
-          child: SpotifyPlayer(clientCredentials: clientCredentials),
+          child: SpotifyPlaylistPlayer(
+              clientCredentials: clientCredentials, playlists: playlists),
         ),
       ),
     );
