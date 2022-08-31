@@ -1,18 +1,12 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+A Fluitter package that provides Spotify player widgets, which can be used to seamlessly connect with your Spotify app.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+<p>
+  <img src="https://github.com/ixdlabs/spotify-player-widgets/blob/master/previews/spotify_player.gif?raw=true"
+    alt="Spotify player" height="400"/>
+   &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/ixdlabs/spotify-player-widgets/blob/master/previews/spotify_mini_player.gif?raw=true"
+   alt="Spotify mini player" height="400"/>
+</p>
 
 ## Features
 
@@ -24,14 +18,66 @@ TODO: List prerequisites and provide or point to information on how to
 start using the package.
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+You can import the package as follows,
 
 ```dart
-const like = 'sample';
+import 'package:spotify_player_widgets/spotify_player_widgets.dart';
+```
+#### Example : SpotifyPlayer widget
+
+```dart
+class SpotifyPlayerDemo extends StatelessWidget {
+   SpotifyPlayerDemo({Key? key}) : super(key: key);
+
+  final ClientCredentials clientCredentials = ClientCredentials(
+      clientId:<CLIENT_ID>,
+      redirectUrl: <REDIRECT_URL>);
+  @override
+  Widget build(BuildContext context) {
+    return  SpotifyPlayer(clientCredentials: clientCredentials);
+  }
+}
 ```
 
+#### Example : SpotifyMiniPlayer widget
+
+```dart
+class SpotifyMiniPlayerDemo extends StatelessWidget {
+  SpotifyMiniPlayerDemo({Key? key}) : super(key: key);
+
+  final ClientCredentials clientCredentials = ClientCredentials(
+      clientId:<CLIENT_ID>,
+      redirectUrl: <REDIRECT_URL>);
+  @override
+  Widget build(BuildContext context) {
+    return  SpotifyMiniPlayer(clientCredentials: clientCredentials);
+  }
+}
+```
+
+#### Example : SpotifyPlaylistPlayer widget
+
+```dart
+class SpotifyPlaylistPlayerDemo extends StatelessWidget {
+  SpotifyPlaylistPlayerDemo({Key? key}) : super(key: key);
+  final ClientCredentials clientCredentials = ClientCredentials(
+      clientId:<CLIENT_ID>,
+      redirectUrl: <REDIRECT_URL>);
+
+  final List<PlaylistDetails> playlists = [
+    PlaylistDetails(
+        url: "playlist URL",
+        name: "playlist name",
+        coverImageUrl: "playlist cover image URL - Optional"),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return SpotifyPlaylistPlayer(playlists: playlists, clientCredentials: clientCredentials);
+  }
+
+}
+```
 ## Additional information
 
 TODO: Tell users more about the package: where to find more information, how to 
