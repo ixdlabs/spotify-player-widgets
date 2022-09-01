@@ -9,20 +9,81 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Spotify Players Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const SpotifyWidgetDemo(),
+      home: SafeArea(
+        child: Scaffold(
+            appBar: AppBar(
+              title: const Center(child: Text("Example App")),
+            ),
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SpotifyPlayerWidgetDemo(),
+                        )),
+                    child: const Text("Spotify Player Widget"),
+                  ),
+                  const SizedBox(height: 20.0),
+                  ElevatedButton(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const SpotifyMiniPlayerWidgetDemo(),
+                        )),
+                    child: const Text("Spotify Mini Player Widget"),
+                  ),
+                  const SizedBox(height: 20.0),
+                  ElevatedButton(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const SpotifyPlaylistPlayerWidgetDemo(),
+                        )),
+                    child: const Text("Spotify Playlist Player Widget"),
+                  ),
+                ],
+              ),
+            )),
+      ),
     );
   }
 }
 
-class SpotifyWidgetDemo extends StatelessWidget {
-  const SpotifyWidgetDemo({Key? key}) : super(key: key);
+class SpotifyPlayerWidgetDemo extends StatelessWidget {
+  const SpotifyPlayerWidgetDemo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // NOTE: dotenv isn't required to work with this package, you can simply add the secrets here.
+    final ClientCredentials clientCredentials = ClientCredentials(
+        clientId: dotenv.env['CLIENT_ID'].toString(),
+        redirectUrl: dotenv.env['REDIRECT_URL'].toString());
+
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Center(child: Text("Spotify Player Demo")),
+        ),
+        body: Center(
+          child: SpotifyPlayer(clientCredentials: clientCredentials),
+        ),
+      ),
+    );
+  }
+}
+
+class SpotifyMiniPlayerWidgetDemo extends StatelessWidget {
+  const SpotifyMiniPlayerWidgetDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +91,27 @@ class SpotifyWidgetDemo extends StatelessWidget {
         clientId: dotenv.env['CLIENT_ID'].toString(),
         redirectUrl: dotenv.env['REDIRECT_URL'].toString());
 
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Center(child: Text("Spotify Player Demo")),
+        ),
+        body: Center(
+          child: SpotifyMiniPlayer(clientCredentials: clientCredentials),
+        ),
+      ),
+    );
+  }
+}
+
+class SpotifyPlaylistPlayerWidgetDemo extends StatelessWidget {
+  const SpotifyPlaylistPlayerWidgetDemo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final ClientCredentials clientCredentials = ClientCredentials(
+        clientId: dotenv.env['CLIENT_ID'].toString(),
+        redirectUrl: dotenv.env['REDIRECT_URL'].toString());
     final List<PlaylistDetails> playlists = [
       PlaylistDetails(
           url: "https://open.spotify.com/playlist/6TK6jJIzcjyErNGex4xqYE",
@@ -41,15 +123,16 @@ class SpotifyWidgetDemo extends StatelessWidget {
               "https://open.spotify.com/playlist/1oljSfrrMYqCyiWu1vtsAu?si=6f09797b27cd4a55",
           name: "Bubbles"),
     ];
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Center(child: Text("Example App")),
+          title: const Center(child: Text("Spotify Player Demo")),
         ),
         body: Center(
           child: SpotifyPlaylistPlayer(
-              clientCredentials: clientCredentials, playlists: playlists),
+            clientCredentials: clientCredentials,
+            playlists: playlists,
+          ),
         ),
       ),
     );
