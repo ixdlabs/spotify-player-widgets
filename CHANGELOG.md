@@ -1,3 +1,3 @@
 ## 0.0.1
+* Initial implementation 
 
-* TODO: Describe initial release.
