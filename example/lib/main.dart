@@ -14,47 +14,56 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Spotify Players Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: SafeArea(
-        child: Scaffold(
-            appBar: AppBar(
-              title: const Center(child: Text("Example App")),
+      home: const SpotifyPlayerWidgetsDemo(),
+    );
+  }
+}
+
+class SpotifyPlayerWidgetsDemo extends StatelessWidget {
+  const SpotifyPlayerWidgetsDemo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Center(child: Text("Example App")),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SpotifyPlayerWidgetDemo(),
+                      )),
+                  child: const Text("Spotify Player Widget"),
+                ),
+                const SizedBox(height: 20.0),
+                ElevatedButton(
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const SpotifyMiniPlayerWidgetDemo(),
+                      )),
+                  child: const Text("Spotify Mini Player Widget"),
+                ),
+                const SizedBox(height: 20.0),
+                ElevatedButton(
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const SpotifyPlaylistPlayerWidgetDemo(),
+                      )),
+                  child: const Text("Spotify Playlist Player Widget"),
+                ),
+              ],
             ),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SpotifyPlayerWidgetDemo(),
-                        )),
-                    child: const Text("Spotify Player Widget"),
-                  ),
-                  const SizedBox(height: 20.0),
-                  ElevatedButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              const SpotifyMiniPlayerWidgetDemo(),
-                        )),
-                    child: const Text("Spotify Mini Player Widget"),
-                  ),
-                  const SizedBox(height: 20.0),
-                  ElevatedButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              const SpotifyPlaylistPlayerWidgetDemo(),
-                        )),
-                    child: const Text("Spotify Playlist Player Widget"),
-                  ),
-                ],
-              ),
-            )),
-      ),
+          )),
     );
   }
 }
