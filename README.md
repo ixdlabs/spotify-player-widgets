@@ -7,7 +7,7 @@ A Fluitter package that provides Spotify player widgets, which can be used to se
 
 TODO: List what your package can do. Maybe include images, gifs, or videos.
 
-#### Widgets Demo
+#### Widget Demos
 
 
 <p>
