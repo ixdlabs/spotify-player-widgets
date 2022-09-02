@@ -1,12 +1,21 @@
 A Fluitter package that provides Spotify player widgets, which can be used to seamlessly connect with your Spotify app.
 
+#### Widgets Demo
+
 <p>
   <img src="https://github.com/ixdlabs/spotify-player-widgets/blob/master/previews/spotify_player.gif?raw=true"
     alt="Spotify player" height="400"/>
    &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://github.com/ixdlabs/spotify-player-widgets/blob/master/previews/spotify_mini_player.gif?raw=true"
    alt="Spotify mini player" height="400"/>
+   &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/ixdlabs/spotify-player-widgets/blob/master/previews/spotify_playlist_player.gif?raw=true"
+   alt="Spotify mini player" height="400"/>
 </p>
+
+#### Example App Demo
+ <img src="https://github.com/ixdlabs/spotify-player-widgets/blob/master/previews/example_app.gif?raw=true"
+   alt="Spotify mini player" height="400"/>
 
 ## Features
 
