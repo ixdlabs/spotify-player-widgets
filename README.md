@@ -1,4 +1,4 @@
-A Fluitter package that provides Spotify player widgets, which can be used to seamlessly connect with your Spotify app.
+A Flutter package that provides Spotify player widgets, which can be used to seamlessly connect with your Spotify app.
 
 
 
